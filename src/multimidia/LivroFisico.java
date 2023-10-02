@@ -76,7 +76,7 @@ public class LivroFisico extends ItemBiblioteca{
         this.estadoConservação = estadoUso;
     }
 
-    public boolean ehLivro(){
+    public boolean ehLivroFisico(){
         return true;
     }
 }

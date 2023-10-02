@@ -101,4 +101,8 @@ visto que, por ser virtual, ele sempre estara disponivel para ser visualizado */
     public void acessaLivroDigital(){
         System.out.println("Voce agora esta lendo o livro " + getTitulo());
     }
+
+    public boolean ehLivroDigital(){
+        return true;
+    }
 }
