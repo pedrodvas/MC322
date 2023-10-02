@@ -1,7 +1,7 @@
 package multimidia;
 import java.time.LocalDate;
 
-public class LivroDigital{
+public class LivroDigital extends ItemBiblioteca{
 /*Para um ebook, nao faz sentido falarmos em disponibilidade que nem um livro fisico,
 visto que, por ser virtual, ele sempre estara disponivel para ser visualizado */    
     private String titulo;
@@ -15,7 +15,7 @@ visto que, por ser virtual, ele sempre estara disponivel para ser visualizado */
     private LocalDate dataDisponibilidade;
 
     public LivroDigital(String titulo, String autor, String registro, String formato, double tamanhoMB, int licenças, String local, String requisitos, LocalDate dataDisponibilidade) {
-        this.titulo = titulo;
+        super(titulo);
         this.autor = autor;
         this.registro = registro;
         this.formato = formato;

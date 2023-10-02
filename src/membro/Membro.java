@@ -78,9 +78,9 @@ public class Membro{
         }
     }
 
-    public void devolveLivroDigital(LivroFisico livro){
+    public void devolveLivroDigital(LivroDigital livro){
         if (livrosDigitaisEmprestados.contains(livro)){
-            livrosFisicosEmprestados.remove(livro);
+            livrosDigitaisEmprestados.remove(livro);
             livro.devolveItem();  
             System.out.println("Livro " + livro.getTitulo() + "devolvido com sucesso!");
         }
@@ -132,4 +132,27 @@ public class Membro{
             System.out.println("Voce nao emprestou este DVD.");
         }
     }
+
+    public void emprestaOutraMidia(OutrasMidias outraMidia){
+        if (outraMidia.getDisponibilidade() == true){
+            outrasMidiasEmprestadas.add(outraMidia);
+            outraMidia.emprestaItem();
+            System.out.println("Midia" + outraMidia.getTitulo() + " emprestada com sucesso!");
+        }
+        else{
+            System.out.println("Voce nao emprestou esse item.");
+        }
+    }
+
+    public void devolveOutraMidia(OutrasMidias outraMidia){
+        if (outrasMidiasEmprestadas.contains(outraMidia)){
+            outrasMidiasEmprestadas.remove(outraMidia);
+            outraMidia.devolveItem();
+            System.out.println("Midia " + outraMidia.getTitulo() + " devolvida com sucesso!");
+        }
+        else{
+            System.out.println("Voce nao emprestou esta midia.");
+        }
+    }
+
 }
