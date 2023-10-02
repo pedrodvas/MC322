@@ -10,7 +10,12 @@ import java.util.List;
 public class Membro{
     private String nome;
     private String cpf;
+<<<<<<< HEAD
     private String senha;
+=======
+    public boolean multa; 
+    private int emprestimosAtuais; // Vamos considerar o limite maximo de emprestimos igual a 5 itens quaisquer da biblioteca
+>>>>>>> 3bfa403356d4439dfa08da6518e1ebd25691cc1d
     private List<LivroFisico> livrosFisicosEmprestados;
     private List<LivroDigital> livrosDigitaisEmprestados;
     private List<CD> cdsEmprestados;
@@ -20,6 +25,7 @@ public class Membro{
     public Membro(String nome, String cpf){
         this.nome = nome;
         this.cpf = cpf;
+        this.emprestimosAtuais = 0;
     }
 
     public String getNome(){
@@ -46,11 +52,32 @@ public class Membro{
         return false;
     }
 
+    public boolean temMulta(){
+        return multa;
+    }
+
+    public boolean podeEmprestar(){
+        return emprestimosAtuais < 5; // Limite maximo de emprestimos
+    }
+
+    public void pagaMulta(){
+        this.multa = false;
+    }
+
+    public void adicionaMulta(){
+        this.multa = true;
+    }
+
     public void emprestaLivroFisico(LivroFisico livro){
         if (livro.getDisponibilidade() == true){
-            livrosFisicosEmprestados.add(livro);
-            livro.emprestaItem();
-            System.out.println("Livro" + livro.getTitulo() + "emprestado com sucesso!");
+            if (podeEmprestar()){
+                livrosFisicosEmprestados.add(livro);
+                livro.emprestaItem();
+                System.out.println("Livro" + livro.getTitulo() + "emprestado com sucesso!");    
+            }
+            else{
+                System.out.println("Voce ja excedeu o limite de emprestimos!");
+            }
         }
         else{
             System.out.println("O livro esta indisponivel!");
@@ -70,18 +97,23 @@ public class Membro{
 
      public void emprestaLivroDigital(LivroDigital livro){
         if (livro.getDisponibilidade() == true){
-            livrosDigitaisEmprestados.add(livro);
-            livro.emprestaItem();
-            System.out.println("Livro" + livro.getTitulo() + "emprestado com sucesso!");
+            if (podeEmprestar()){
+                livrosDigitaisEmprestados.add(livro);
+                livro.emprestaItem();
+                System.out.println("Livro" + livro.getTitulo() + "emprestado com sucesso!");
+            }
+            else{
+                System.out.println("Voce ja excedeu o limite de emprestimos!");
+            }
         }
         else{
             System.out.println("O livro esta indisponivel!");
         }
     }
 
-    public void devolveLivroDigital(LivroFisico livro){
+    public void devolveLivroDigital(LivroDigital livro){
         if (livrosDigitaisEmprestados.contains(livro)){
-            livrosFisicosEmprestados.remove(livro);
+            livrosDigitaisEmprestados.remove(livro);
             livro.devolveItem();  
             System.out.println("Livro " + livro.getTitulo() + "devolvido com sucesso!");
         }
@@ -92,9 +124,14 @@ public class Membro{
 
     public void emprestaCD(CD CD){
         if (CD.getDisponibilidade() == true){
-            cdsEmprestados.add(CD);
-            CD.emprestaItem();
-            System.out.println("CD " + CD.getTitulo() + " emprestado com sucesso!");
+            if (podeEmprestar()){
+                cdsEmprestados.add(CD);
+                CD.emprestaItem();
+                System.out.println("CD " + CD.getTitulo() + " emprestado com sucesso!");
+            }
+            else{
+                System.out.println("Voce ja excedeu o limite de emprestimos!");
+            }
         }
         else{
             System.out.println("O CD nao esta disponivel!");
@@ -114,9 +151,14 @@ public class Membro{
 
     public void emprestaDVD(DVD DVD){
         if (DVD.getDisponibilidade() == true){
-            dvdsEmprestados.add(DVD);
-            DVD.emprestaItem();
-            System.out.println("DVD" + DVD.getTitulo() + " emprestado com sucesso!");
+            if (podeEmprestar()){
+                dvdsEmprestados.add(DVD);
+                DVD.emprestaItem();
+                System.out.println("DVD" + DVD.getTitulo() + " emprestado com sucesso!");
+            }
+            else{
+                System.out.println("Voce ja excedeu o limite de emprestimos!");
+            }
         }
         else{
             System.out.println("O DVD nao esta disponivel!");
@@ -133,4 +175,32 @@ public class Membro{
             System.out.println("Voce nao emprestou este DVD.");
         }
     }
+
+    public void emprestaOutraMidia(OutrasMidias outraMidia){
+        if (outraMidia.getDisponibilidade() == true){
+            if (podeEmprestar()){
+                outrasMidiasEmprestadas.add(outraMidia);
+                outraMidia.emprestaItem();
+                System.out.println("Midia" + outraMidia.getTitulo() + " emprestada com sucesso!");   
+            }
+            else{
+                System.out.println("Voce ja excedeu o limite de emprestimos!");
+            }
+        }
+        else{
+            System.out.println("A midia nao esta disponivel!");
+        }
+    }
+
+    public void devolveOutraMidia(OutrasMidias outraMidia){
+        if (outrasMidiasEmprestadas.contains(outraMidia)){
+            outrasMidiasEmprestadas.remove(outraMidia);
+            outraMidia.devolveItem();
+            System.out.println("Midia " + outraMidia.getTitulo() + " devolvida com sucesso!");
+        }
+        else{
+            System.out.println("Voce nao emprestou esta midia.");
+        }
+    }
+
 }

@@ -65,4 +65,8 @@ public class OutrasMidias extends ItemBiblioteca {
     public void setEstadoConservação(String estadoConservação) {
         this.estadoConservação = estadoConservação;
     }
+
+    public boolean ehOutraMidia(){
+        return true;
+    }
 }

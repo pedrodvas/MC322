@@ -27,7 +27,11 @@ public class ItemBiblioteca {
         disponibilidade = true;
     }
 
-    public boolean ehLivro(){
+    public boolean ehLivroFisico(){
+        return false;
+    }
+
+    public boolean ehLivroDigital(){
         return false;
     }
 
@@ -36,6 +40,10 @@ public class ItemBiblioteca {
     }
 
     public boolean ehDVD(){
+        return false;
+    }
+
+    public boolean ehOutraMidia(){
         return false;
     }
 }
