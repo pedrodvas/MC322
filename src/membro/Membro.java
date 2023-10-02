@@ -1,15 +1,20 @@
 package membro;
 import multimidia.LivroFisico;
+import multimidia.OutrasMidias;
 import multimidia.CD;
 import multimidia.DVD;
+import multimidia.LivroDigital;
+
 import java.util.List;
 
 public class Membro{
     private String nome;
     private String cpf;
-    private List<LivroFisico> livrosEmprestados;
+    private List<LivroFisico> livrosFisicosEmprestados;
+    private List<LivroDigital> livrosDigitaisEmprestados;
     private List<CD> cdsEmprestados;
     private List<DVD> dvdsEmprestados;
+    private List<OutrasMidias> outrasMidiasEmprestadas;
 
     public Membro(String nome, String cpf){
         this.nome = nome;
@@ -40,9 +45,9 @@ public class Membro{
         return false;
     }
 
-    public void emprestaLivro(LivroFisico livro){
+    public void emprestaLivroFisico(LivroFisico livro){
         if (livro.getDisponibilidade() == true){
-            livrosEmprestados.add(livro);
+            livrosFisicosEmprestados.add(livro);
             livro.emprestaItem();
             System.out.println("Livro" + livro.getTitulo() + "emprestado com sucesso!");
         }
@@ -51,9 +56,31 @@ public class Membro{
         }
     }
 
-    public void devolveLivro(LivroFisico livro){
-        if (livrosEmprestados.contains(livro)){
-            livrosEmprestados.remove(livro);
+    public void devolveLivroFisico(LivroFisico livro){
+        if (livrosFisicosEmprestados.contains(livro)){
+            livrosFisicosEmprestados.remove(livro);
+            livro.devolveItem();  
+            System.out.println("Livro " + livro.getTitulo() + "devolvido com sucesso!");
+        }
+        else {
+            System.out.println("Voce nao emprestou esse livro.");
+        }
+    }
+
+     public void emprestaLivroDigital(LivroDigital livro){
+        if (livro.getDisponibilidade() == true){
+            livrosDigitaisEmprestados.add(livro);
+            livro.emprestaItem();
+            System.out.println("Livro" + livro.getTitulo() + "emprestado com sucesso!");
+        }
+        else{
+            System.out.println("O livro esta indisponivel!");
+        }
+    }
+
+    public void devolveLivroDigital(LivroFisico livro){
+        if (livrosDigitaisEmprestados.contains(livro)){
+            livrosFisicosEmprestados.remove(livro);
             livro.devolveItem();  
             System.out.println("Livro " + livro.getTitulo() + "devolvido com sucesso!");
         }
