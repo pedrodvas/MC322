@@ -10,6 +10,7 @@ import java.util.List;
 public class Membro{
     private String nome;
     private String cpf;
+    private String senha;
     private List<LivroFisico> livrosFisicosEmprestados;
     private List<LivroDigital> livrosDigitaisEmprestados;
     private List<CD> cdsEmprestados;

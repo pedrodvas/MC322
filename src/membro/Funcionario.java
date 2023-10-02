@@ -1,10 +1,13 @@
 package membro;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Funcionario{
     private String nome;
     private String cpf;
     private String nivelAcesso; //Para sabermos se eh um gerente, atendente, etc
     private float salario;
+    private List<String> funcoes_permitidas;
 
     public Funcionario(String nome, String cpf, String nivelAcesso, float salario){
         this.nome = nome;
@@ -43,5 +46,9 @@ public class Funcionario{
 
     public void setSalario(float salario){
         this.salario = salario;
+    }
+
+    public void funcionarioComando(String comando){
+
     }
 }
