@@ -10,12 +10,8 @@ import java.util.List;
 public class Membro{
     private String nome;
     private String cpf;
-<<<<<<< HEAD
-    private String senha;
-=======
     public boolean multa; 
     private int emprestimosAtuais; // Vamos considerar o limite maximo de emprestimos igual a 5 itens quaisquer da biblioteca
->>>>>>> 3bfa403356d4439dfa08da6518e1ebd25691cc1d
     private List<LivroFisico> livrosFisicosEmprestados;
     private List<LivroDigital> livrosDigitaisEmprestados;
     private List<CD> cdsEmprestados;

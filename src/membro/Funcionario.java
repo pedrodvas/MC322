@@ -1,5 +1,4 @@
 package membro;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Funcionario{
@@ -7,7 +6,7 @@ public class Funcionario{
     private String cpf;
     private String nivelAcesso; //Para sabermos se eh um gerente, atendente, etc
     private float salario;
-    private List<String> funcoes_permitidas;
+    private List<String> funcoesPermitidas;
 
     public Funcionario(String nome, String cpf, String nivelAcesso, float salario){
         this.nome = nome;
@@ -49,6 +48,16 @@ public class Funcionario{
     }
 
     public void funcionarioComando(String comando){
-
+        try{
+            if (this.funcoesPermitidas.contains(comando)){
+                System.out.println("O comando " + comando + "foi executado\n");
+            }
+            else{
+                throw new IllegalArgumentException();
+            }
+        }
+        catch(IllegalArgumentException exception){
+            System.err.println("O funcionário não tem permissão para executar o comando " + comando + "\n");
+        }
     }
 }
