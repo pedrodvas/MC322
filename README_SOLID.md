@@ -5,3 +5,6 @@ Como é possível ver no código, todas as funções no código dadas em cada cl
 
     - Open closed principle
 Uma das formas de se utilizar o Open Closed principle no código é por exemplo ao extender a classe estudante para estudante de pós graduação, assim respeitamos o fato de que alterações não devem ser feitas em código já estabelecido ao mesmo tempo que tornamos possível fazer extensões deste
+
+    - Liskov substitution principle
+Como é possível ver em torna membro para EstudantePosGrad, é possível observar que EstudantePosGrad pode assumir todas as responsabilidades de Membro sem que hajam erros no código
