@@ -52,6 +52,54 @@ public class Membro{
         return multa;
     }
 
+    public int getEmprestimosAtuais() {
+        return emprestimosAtuais;
+    }
+
+    public void setEmprestimosAtuais(int emprestimosAtuais) {
+        this.emprestimosAtuais = emprestimosAtuais;
+    }
+
+    public List<LivroFisico> getLivrosFisicosEmprestados() {
+        return livrosFisicosEmprestados;
+    }
+
+    public void setLivrosFisicosEmprestados(List<LivroFisico> livrosFisicosEmprestados) {
+        this.livrosFisicosEmprestados = livrosFisicosEmprestados;
+    }
+
+    public List<LivroDigital> getLivrosDigitaisEmprestados() {
+        return livrosDigitaisEmprestados;
+    }
+
+    public void setLivrosDigitaisEmprestados(List<LivroDigital> livrosDigitaisEmprestados) {
+        this.livrosDigitaisEmprestados = livrosDigitaisEmprestados;
+    }
+
+    public List<CD> getCdsEmprestados() {
+        return cdsEmprestados;
+    }
+
+    public void setCdsEmprestados(List<CD> cdsEmprestados) {
+        this.cdsEmprestados = cdsEmprestados;
+    }
+
+    public List<DVD> getDvdsEmprestados() {
+        return dvdsEmprestados;
+    }
+
+    public void setDvdsEmprestados(List<DVD> dvdsEmprestados) {
+        this.dvdsEmprestados = dvdsEmprestados;
+    }
+
+    public List<OutrasMidias> getOutrasMidiasEmprestadas() {
+        return outrasMidiasEmprestadas;
+    }
+
+    public void setOutrasMidiasEmprestadas(List<OutrasMidias> outrasMidiasEmprestadas) {
+        this.outrasMidiasEmprestadas = outrasMidiasEmprestadas;
+    }
+
     public boolean podeEmprestar(){
         return emprestimosAtuais < 5; // Limite maximo de emprestimos
     }
@@ -198,5 +246,7 @@ public class Membro{
             System.out.println("Voce nao emprestou esta midia.");
         }
     }
+
+    
 
 }

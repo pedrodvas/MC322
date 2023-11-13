@@ -25,4 +25,21 @@ public class Professor extends Membro {
     public boolean ehProfessor(){
         return true;
     }
+
+    public Membro tornaMembro() {
+        Membro novoMembro = new Membro(getNome(), getCpf());
+        novoMembro.multa = this.multa;
+        novoMembro.setEmprestimosAtuais(getEmprestimosAtuais());
+
+        // Copying lists using List interface
+        novoMembro.setLivrosFisicosEmprestados(getLivrosFisicosEmprestados());
+        novoMembro.setLivrosDigitaisEmprestados(getLivrosDigitaisEmprestados());
+        novoMembro.setCdsEmprestados(getCdsEmprestados());
+        novoMembro.setDvdsEmprestados(getDvdsEmprestados());
+        novoMembro.setOutrasMidiasEmprestadas(getOutrasMidiasEmprestadas());
+
+        return novoMembro;
+    }
+
+
 }
